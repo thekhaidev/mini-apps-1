@@ -30,24 +30,60 @@ function testClick(e) {
 
 // Win condition for three in a row first row
 if (((item[0].innerHTML==='[O]') && (item[1].innerHTML==='[O]') && (item[2].innerHTML==='[O]')) || ((item[0].innerHTML==='[X]') && (item[1].innerHTML==='[X]') && (item[2].innerHTML==='[X]'))) {
-  alert('Congratulations! You won!')
   counter = 0;
+  alert('Congratulations! You won!')
   resetBoard();
 }
 
 // Win condition for three in a row second row
 if (((item[3].innerHTML==='[O]') && (item[4].innerHTML==='[O]') && (item[5].innerHTML==='[O]')) || ((item[3].innerHTML==='[X]') && (item[4].innerHTML==='[X]') && (item[5].innerHTML==='[X]'))) {
-  alert('Congratulations! You won!')
   counter = 0;
+  alert('Congratulations! You won!')
   resetBoard();
 }
 
 // Win condition for three in a row third row
 if (((item[6].innerHTML==='[O]') && (item[7].innerHTML==='[O]') && (item[8].innerHTML==='[O]')) || ((item[6].innerHTML==='[X]') && (item[7].innerHTML==='[X]') && (item[8].innerHTML==='[X]'))) {
-  alert('Congratulations! You won!')
   counter = 0;
+  alert('Congratulations! You won!')
   resetBoard();
 }
+
+// Win condition for three in a row vertical first row
+if (((item[0].innerHTML==='[O]') && (item[3].innerHTML==='[O]') && (item[6].innerHTML==='[O]')) || ((item[0].innerHTML==='[X]') && (item[3].innerHTML==='[X]') && (item[6].innerHTML==='[X]'))) {
+  counter = 0;
+  alert('Congratulations! You won!')
+  resetBoard();
+}
+
+// Win condition for three in a row vertical second row
+if (((item[1].innerHTML==='[O]') && (item[4].innerHTML==='[O]') && (item[7].innerHTML==='[O]')) || ((item[1].innerHTML==='[X]') && (item[4].innerHTML==='[X]') && (item[7].innerHTML==='[X]'))) {
+  counter = 0;
+  alert('Congratulations! You won!')
+  resetBoard();
+}
+
+// Win condition for three in a row vertical third row
+if (((item[2].innerHTML==='[O]') && (item[5].innerHTML==='[O]') && (item[8].innerHTML==='[O]')) || ((item[2].innerHTML==='[X]') && (item[5].innerHTML==='[X]') && (item[8].innerHTML==='[X]'))) {
+  counter = 0;
+  alert('Congratulations! You won!')
+  resetBoard();
+}
+
+// Win condition for three in a row diagonal major row
+if (((item[0].innerHTML==='[O]') && (item[4].innerHTML==='[O]') && (item[8].innerHTML==='[O]')) || ((item[0].innerHTML==='[X]') && (item[4].innerHTML==='[X]') && (item[8].innerHTML==='[X]'))) {
+  counter = 0;
+  alert('Congratulations! You won!')
+  resetBoard();
+}
+
+// Win condition for three in a row diagonal minor row
+if (((item[6].innerHTML==='[O]') && (item[4].innerHTML==='[O]') && (item[2].innerHTML==='[O]')) || ((item[6].innerHTML==='[X]') && (item[4].innerHTML==='[X]') && (item[2].innerHTML==='[X]'))) {
+  counter = 0;
+  alert('Congratulations! You won!')
+  resetBoard();
+}
+
 
 // Increment counter to keep track of turns
 counter++;
@@ -56,8 +92,8 @@ console.log(counter)
 // Draw condition. If no one has won at this point,
 // Declare draw and reset board
 if (counter === 9) {
-  alert('The game has tied!')
   counter = 0;
+  alert('The game has tied!')
   resetBoard();
 }
 }
