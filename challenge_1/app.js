@@ -1,5 +1,5 @@
-function testClick() {
- alert("Yo dawg, this been clicked")
+function testClick(e) {
+ console.log(e.path[0].innerHTML)
 }
 
 const board = document.getElementById("board");
