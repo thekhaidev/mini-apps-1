@@ -1,0 +1,15 @@
+{
+  "name": "csv_report",
+  "version": "1.0.0",
+  "description": "Challenge 2 from Mini Apps 1 Hack Reactor SFO138",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Khai Tran",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
