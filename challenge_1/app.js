@@ -1,6 +1,10 @@
 function testClick(e) {
  console.log(e.path[0].innerHTML)
- e.path[0].innerHTML = "Yo"
+ if (e.path[0].innerHTML === "Yo") {
+   e.path[0].innerHTML = "Nah"
+ } else {
+  e.path[0].innerHTML = "Yo"
+ }
 }
 
 const board = document.getElementById("board");
