@@ -1,5 +1,6 @@
 var turn = 'First'
 
+
 function testClick(e) {
 //  console.log(e.path[0].innerHTML)
 
@@ -23,6 +24,18 @@ function testClick(e) {
 }
 }
 
+function resetBoard(e) {
+  var item = board.getElementsByTagName('td')
+  for (var i = 0; i < item.length; i++) {
+    item[i].innerHTML = '[  ]'
+    turn = 'First'
+  }
+}
+
+
+const reset = document.getElementById("reset")
+
 const board = document.getElementById("board");
 
+reset.addEventListener("click", resetBoard)
 board.addEventListener("click", testClick);
