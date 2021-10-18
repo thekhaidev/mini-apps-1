@@ -1,9 +1,9 @@
 function testClick(e) {
  console.log(e.path[0].innerHTML)
- if (e.path[0].innerHTML === "Yo") {
-   e.path[0].innerHTML = "Nah"
+ if (e.path[0].innerHTML === "[X]") {
+   e.path[0].innerHTML = "[O]"
  } else {
-  e.path[0].innerHTML = "Yo"
+  e.path[0].innerHTML = "[X]"
  }
 }
 
