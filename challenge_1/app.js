@@ -1,5 +1,7 @@
-
-
 function testClick() {
-  alert("This has been clicked my boy")
+ alert("Yo dawg, this been clicked")
 }
+
+const board = document.getElementById("board");
+
+board.addEventListener("click", testClick);
