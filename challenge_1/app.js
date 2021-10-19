@@ -10,20 +10,26 @@ var counter = 0;
 function testClick(e) {
 //  console.log(e.path[0].innerHTML)
 
- if ((e.path[0].innerHTML === "[  ]") && (turn === 'First')) {
+ if (turn === 'First') {
    e.path[0].innerHTML = "[X]"
    console.log('Current turn: ', turn)
+   counter++;
+console.log(counter)
    turn = 'O'
  }
 
  if ((e.path[0].innerHTML === "[  ]") && (turn === 'O')) {
   console.log('Currently turn ', turn)
+  counter++;
+console.log(counter)
   e.path[0].innerHTML = "[O]"
   turn = 'X'
 }
 
  if ((e.path[0].innerHTML === "[  ]") && (turn === 'X')){
   console.log('Currently turn ', turn)
+  counter++;
+console.log(counter)
   e.path[0].innerHTML = "[X]"
   turn = 'O'
 }
@@ -83,11 +89,6 @@ if (((item[6].innerHTML==='[O]') && (item[4].innerHTML==='[O]') && (item[2].inne
   alert('Congratulations! You won!')
   resetBoard();
 }
-
-
-// Increment counter to keep track of turns
-counter++;
-console.log(counter)
 
 // Draw condition. If no one has won at this point,
 // Declare draw and reset board]

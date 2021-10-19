@@ -8,10 +8,14 @@ table {
   margin-left: auto;
 }
 
-p {
+h3 {
 text-align: center;
 }
 
 td {
   border: 1px solid black;
+}
+
+table {
+  margin-bottom: 5px;
 }
