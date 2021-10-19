@@ -6,12 +6,12 @@
 <body>
   <h1>HELLO WORLD!</h1>
   <p>This page is being served from the express server</p>
-  <form action="http://localhost:3000/api/reports" method="post">
-    <textarea>
+  <form action="/api/reports" name="cvsForm" method="post">
+    <textarea class="text" cols="86" rows ="20" name="cvsForm">
       Enter your text here
     </textarea>
     <br>
-    <button type='submit' name='submit'>Submit</button>
+    <button type='submit'>Submit</button>
   </form>
 </body>
 

@@ -24,8 +24,7 @@ app.get('/api/reports', (req, res,) => {
 
 app.post('/api/reports', (req, res) => {
   console.log(JSON.stringify(req.body))
-  console.log('Post Request Working')
-  test.push(JSON.stringify(req.body))
+  test.push(req.body)
   res.redirect('/')
   // res.send('Got a post request!')
 })
