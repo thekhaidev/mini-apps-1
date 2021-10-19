@@ -1,12 +1,25 @@
 <header>
   <title>Drip Tac Toe</title>
+  <link
+  rel="stylesheet"
+  href="https://unpkg.com/xp.css"
+>
+<link rel="stylesheet" href="./style.css">
 </header>
 <body>
-  <h1>Drip Tac Toe</h1>
+  <div class="window" style="width: 300px">
+    <div class="title-bar">
+      <div class="title-bar-text">Drip Tac Toe</div>
+      <div class="title-bar-controls">
+        <button aria-label="Help"></button>
+        <button id="reset" aria-label="Close"></button>
+      </div>
+    </div>
+
+  <!-- <h1>Drip Tac Toe</h1> -->
   <div>
     <p>This is the board</p>
     <table id="board">
-      <button id='reset'>Reset</button>
       <tr>
         <td id="1-1">[  ]</td>
         <td id="1-2">[  ]</td>
@@ -23,5 +36,12 @@
         <td id="3-3">[  ]</td>
       </tr>
     </table>
-  </div> <script src="./app.js"></script>
+  </div>
+  <div class="status-bar">
+    <p class="status-bar-field">Press F1 for help</p>
+    <p class="status-bar-field">Khai OS XP</p>
+    <p class="status-bar-field">Drip Usage: 104%</p>
+  </div>
+</div>
+  <script src="./app.js"></script>
 </body>

@@ -90,7 +90,7 @@ counter++;
 console.log(counter)
 
 // Draw condition. If no one has won at this point,
-// Declare draw and reset board
+// Declare draw and reset board]
 if (counter === 9) {
   counter = 0;
   alert('The game has tied!')
@@ -106,10 +106,6 @@ function resetBoard(e) {
     turn = 'First'
   }
 }
-
-
-
-
 
 reset.addEventListener("click", resetBoard)
 board.addEventListener("click", testClick);

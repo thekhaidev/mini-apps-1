@@ -1,0 +1,17 @@
+.window {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+p {
+text-align: center;
+}
+
+td {
+  border: 1px solid black;
+}
