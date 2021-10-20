@@ -1,3 +1,4 @@
+// Components
 class App extends React.Component {
   constructor(props) {
     super(props)
@@ -131,10 +132,33 @@ class Form3 extends React.Component {
         </form>
         <br />
         <button onClick={nextClick}>Back</button>
+        <button onClick={FinalClick}>Back</button>
       </div>
     )
   }
 }
+
+class FinalForm extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+
+  render() {
+    return (
+      <div>
+        Test
+        <br />
+        <button onClick={homePage}>Back</button>
+        <button onClick={console.log('Placeholder')}>Confirm Purchase</button>
+      </div>
+    )
+  }
+}
+
+
+
+
+// Functions to control rendering
 const testClick = (props) => {
   ReactDOM.render(<Form1 />, document.getElementById('root'))
 }
@@ -146,10 +170,15 @@ const nextClick = (props) => {
 const thirdClick = (props) => {
   ReactDOM.render(<Form3 />, document.getElementById('root'))
 }
+const FinalClick = (props) => {
+  ReactDOM.render(<FinalForm />, document.getElementById('root'))
+}
 
 
 const homePage = (props) => {
   ReactDOM.render(<App />, document.getElementById('root'))
 }
 
+
+// Initial rendering
 ReactDOM.render(<App />, document.getElementById('root'))
