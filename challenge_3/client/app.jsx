@@ -8,6 +8,7 @@ class App extends React.Component {
       <div>
         <h1>Yo this is an app</h1>
         <Test />
+        <button onClick={testClick}>Click me plz</button>
       </div>
     )
   }
@@ -20,13 +21,47 @@ class Test extends React.Component {
 
   render() {
     return (
-      <div>
-        This is another test
-      </div>
+    <table>
+      <tbody>
+      <tr>
+        <td>Ha</td>
+        <td>Ha</td>
+        <td>Ha</td>
+      </tr>
+      <tr>
+        <td>Ha</td>
+        <td>Ha</td>
+        <td>Ha</td>
+      </tr>
+      <tr>
+        <td>Ha</td>
+        <td>Ha</td>
+        <td>Ha</td>
+      </tr>
+      </tbody>
+    </table>
     )
   }
 }
 
+class AnotherTest extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>AHA. GOT EM</h1>
+      </div>
+    )
+  }
 
 
-ReactDOM.render(<App/>, document.getElementById('root'))
+}
+
+const testClick = (props) => {
+  ReactDOM.render(<AnotherTest />, document.getElementById('root'))
+}
+
+ReactDOM.render(<App />, document.getElementById('root'))
