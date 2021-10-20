@@ -11,6 +11,10 @@ var test = [];
 //   next();
 // })
 
+removeLinebreaks = function(str) {
+  return str.replace("/r/n"," ");
+}
+
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -19,12 +23,14 @@ app.get('/', (req, res) => {
 })
 
 app.get('/api/reports', (req, res,) => {
-  res.send(JSON.stringify(test))
+  res.send(test[0])
 })
 
 app.post('/api/reports', (req, res) => {
-  console.log(JSON.stringify(req.body))
-  test.push(req.body)
+  console.log(req.body.cvsForm)
+  value = req.body.cvsForm
+  test.push(value)
+  res.status(201)
   res.redirect('/')
   // res.send('Got a post request!')
 })
