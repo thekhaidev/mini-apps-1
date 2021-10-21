@@ -58,7 +58,10 @@ class Form1 extends React.Component {
       city: "",
       state: "",
       zipcode: "",
-
+      cc: "",
+      cc_exp: "",
+      ccv: "",
+      billingzip: ""
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -73,7 +76,8 @@ class Form1 extends React.Component {
   }
 
   handleSubmit(e) {
-    console.log(this.state)
+    ReactDOM.render(<Form2 data={this.state} handleChange={this.handleChange} handleSubmit={this.handleSubmit}/>, document.getElementById('root'))
+
     e.preventDefault();
   }
 
@@ -139,7 +143,7 @@ class Form2 extends React.Component {
 
           <br />
           <button type="button" onClick={testClick}>Back</button>
-          <button onClick={thirdClick}>Next</button>
+          <button onClick={console.log(this.props)}>Next</button>
         </form>
 
 
@@ -217,7 +221,8 @@ const nextClick = (e, props) => {
 }
 
 const thirdClick = (props) => {
-  ReactDOM.render(<Form3 />, document.getElementById('root'))
+  // ReactDOM.render(<Form3 />, document.getElementById('root'))
+  console.log(this.props)
 }
 const FinalClick = (props) => {
   ReactDOM.render(<FinalForm />, document.getElementById('root'))
