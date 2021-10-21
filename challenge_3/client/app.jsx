@@ -47,6 +47,7 @@ class Test extends React.Component {
 
 class Form1 extends React.Component {
 
+
   constructor(props) {
     super(props)
 
@@ -74,12 +75,12 @@ class Form1 extends React.Component {
   handleChange(e) {
     const name = e.target.name
     const value = e.target.value
-    this.setState({[name]: value});
+    this.setState({ [name]: value });
     console.log(name, value)
   }
 
   handleSubmit(e) {
-    ReactDOM.render(<Form2 data={this.state} handleChange={this.handleChange}/>, document.getElementById('root'))
+    ReactDOM.render(<Form2 data={this.state} handleChange={this.handleChange} />, document.getElementById('root'))
     e.preventDefault();
   }
 
@@ -116,9 +117,9 @@ class Form2 extends React.Component {
     super(props)
 
     this.state = {
-      name: "",
-      email: "",
-      password: "",
+      name: this.props.data.name,
+      email: this.props.data.email,
+      password: this.props.data.password,
       address1: "",
       address2: "",
       city: "",
@@ -129,15 +130,27 @@ class Form2 extends React.Component {
       ccv: "",
       billingzip: ""
     }
+
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
+  componentDidMount() {
+    console.log(this.props.data)
+  }
 
+  handleSubmit(e) {
+    ReactDOM.render(<Form3 data={this.state} handleChange={this.props.handleChange} />, document.getElementById('root'))
+    e.preventDefault();
+    // console.log('This is doing something')
+
+  }
 
   render() {
 
     return (
       <div>
-        <form>
+        {console.log(this.state)}
+        <form id="form2" onSubmit={this.handleSubmit}>
           <label>Address 1:
             <input name="address1" value={this.state.value} onChange={this.props.handleChange}></input>
           </label>
@@ -161,8 +174,8 @@ class Form2 extends React.Component {
           </label>
 
           <br />
-          <button type="button" onClick={testClick}>Back</button>
-          <button>Next</button>
+          <button type="button">Back</button>
+          <button type="submit">Next</button>
         </form>
       </div>
     )
@@ -172,9 +185,25 @@ class Form2 extends React.Component {
 class Form3 extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {
+      name: "",
+      email: "",
+      password: "",
+      address1: "",
+      address2: "",
+      city: "",
+      state: "",
+      zipcode: "",
+      cc: "",
+      cc_exp: "",
+      ccv: "",
+      billingzip: ""
+    }
+
   }
 
   render() {
+    { console.log(this.state) }
     return (
       <div>
         <form>
