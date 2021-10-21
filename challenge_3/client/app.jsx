@@ -46,6 +46,7 @@ class Test extends React.Component {
 }
 
 class Form1 extends React.Component {
+
   constructor(props) {
     super(props)
 
@@ -68,6 +69,8 @@ class Form1 extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
+
+
   handleChange(e) {
     const name = e.target.name
     const value = e.target.value
@@ -76,8 +79,7 @@ class Form1 extends React.Component {
   }
 
   handleSubmit(e) {
-    ReactDOM.render(<Form2 data={this.state} handleChange={this.handleChange} handleSubmit={this.handleSubmit}/>, document.getElementById('root'))
-
+    ReactDOM.render(<Form2 data={this.state} handleChange={this.handleChange}/>, document.getElementById('root'))
     e.preventDefault();
   }
 
@@ -112,42 +114,56 @@ class Form1 extends React.Component {
 class Form2 extends React.Component {
   constructor(props) {
     super(props)
+
+    this.state = {
+      name: "",
+      email: "",
+      password: "",
+      address1: "",
+      address2: "",
+      city: "",
+      state: "",
+      zipcode: "",
+      cc: "",
+      cc_exp: "",
+      ccv: "",
+      billingzip: ""
+    }
   }
 
+
+
   render() {
+
     return (
       <div>
         <form>
           <label>Address 1:
-            <input></input>
+            <input name="address1" value={this.state.value} onChange={this.props.handleChange}></input>
           </label>
-
           <br />
           <label>Address 2:
-            <input></input>
+            <input name="address2" value={this.state.value} onChange={this.props.handleChange}></input>
           </label>
 
           <label>City:
-            <input></input>
+            <input name="city" value={this.state.value} onChange={this.props.handleChange}></input>
           </label>
 
           <br />
           <label>State:
-            <input></input>
+            <input name="state" value={this.state.value} onChange={this.props.handleChange}></input>
           </label>
 
           <br />
           <label>Zipcode:
-            <input></input>
+            <input name="zipcode" value={this.state.value} onChange={this.props.handleChange}></input>
           </label>
 
           <br />
           <button type="button" onClick={testClick}>Back</button>
-          <button onClick={console.log(this.props)}>Next</button>
+          <button>Next</button>
         </form>
-
-
-
       </div>
     )
   }
@@ -216,13 +232,13 @@ const testClick = (props) => {
 }
 
 const nextClick = (e, props) => {
-  console.log(e)
+  // console.log(e)
   ReactDOM.render(<Form2 />, document.getElementById('root'))
 }
 
 const thirdClick = (props) => {
   // ReactDOM.render(<Form3 />, document.getElementById('root'))
-  console.log(this.props)
+  // console.log(this.props)
 }
 const FinalClick = (props) => {
   ReactDOM.render(<FinalForm />, document.getElementById('root'))
