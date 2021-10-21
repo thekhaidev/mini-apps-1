@@ -25,19 +25,19 @@ class Test extends React.Component {
     <table>
       <tbody>
       <tr>
-        <td>Ha</td>
-        <td>Ha</td>
-        <td>Ha</td>
+        <td>Item 1</td>
+        <td>Item 2</td>
+        <td>Item 3</td>
       </tr>
       <tr>
-        <td>Ha</td>
-        <td>Ha</td>
-        <td>Ha</td>
+        <td>Item 4</td>
+        <td>Item 5</td>
+        <td>Item 6</td>
       </tr>
       <tr>
-        <td>Ha</td>
-        <td>Ha</td>
-        <td>Ha</td>
+        <td>Item 6</td>
+        <td>Item 7</td>
+        <td>Item 8</td>
       </tr>
       </tbody>
     </table>
@@ -53,7 +53,7 @@ class Form1 extends React.Component {
   render() {
     return (
       <div>
-        <form>
+        <form method="post" action="/">
           <label>Name:</label>
           <input></input>
           <br />
@@ -132,7 +132,7 @@ class Form3 extends React.Component {
         </form>
         <br />
         <button onClick={nextClick}>Back</button>
-        <button onClick={FinalClick}>Back</button>
+        <button onClick={FinalClick}>Next</button>
       </div>
     )
   }
@@ -174,10 +174,11 @@ const FinalClick = (props) => {
   ReactDOM.render(<FinalForm />, document.getElementById('root'))
 }
 
-
 const homePage = (props) => {
   ReactDOM.render(<App />, document.getElementById('root'))
 }
+
+// Functions to handle event changes
 
 
 // Initial rendering

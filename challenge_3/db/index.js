@@ -10,13 +10,13 @@ const connection = mysql.createConnection({
   password: 'D@nc3D@nc3'
 });
 
-// simple query
-connection.query(
-  'SELECT * FROM `customer`',
-  function(err, results, fields) {
-    console.log(results); // results contains rows returned by server
-    console.log(fields); // fields contains extra meta data about results, if available
-  }
-);
+// simple query to test
+// connection.query(
+//   'SELECT * FROM `customer`',
+//   function(err, results, fields) {
+//     console.log(results); // results contains rows returned by server
+//     console.log(fields); // fields contains extra meta data about results, if available
+//   }
+// );
 
 module.exports.connection = connection
