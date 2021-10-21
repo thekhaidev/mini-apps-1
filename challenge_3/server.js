@@ -28,17 +28,6 @@ app.get('/api/customers', (req, res) => {
 })
 
 app.post('/api/customers', (req, res) => {
-  console.log(req.body[0]["name"])
-  console.log(req.body[0]["email"])
-  console.log(req.body[0]["password"])
-  console.log(req.body[0]["cc"])
-  console.log(req.body[0]["cc_exp"])
-  console.log(req.body[0]["ccv"])
-  console.log(req.body[0]["address"])
-  console.log(req.body[0]["address_2"])
-  console.log(req.body[0]["city"])
-  console.log(req.body[0]["state"])
-  console.log(req.body[0]["zip"])
   queryStr = 'INSERT INTO `customer` (`name`,`email`,`password`,`cc`,`cc_exp`,`ccv`,`address`,`address 2`,`city`,`state`,`zip`) VALUES (?,?,?,?,?,?,?,?,?,?,?)'
   params = [req.body[0]["name"],req.body[0]["email"],req.body[0]["password"], req.body[0]["cc"], req.body[0]["cc_exp"],req.body[0]["ccv"], req.body[0]["address"], req.body[0]["address_2"], req.body[0]["city"], req.body[0]["state"], req.body[0]["zip"]]
   db.query(queryStr, params, (err) => {
