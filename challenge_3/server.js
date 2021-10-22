@@ -28,13 +28,15 @@ app.get('/api/customers', (req, res) => {
 })
 
 app.post('/api/customers', (req, res) => {
-  queryStr = 'INSERT INTO `customer` (`name`,`email`,`password`,`cc`,`cc_exp`,`ccv`,`address`,`address 2`,`city`,`state`,`zip`) VALUES (?,?,?,?,?,?,?,?,?,?,?)'
-  params = [req.body[0]["name"],req.body[0]["email"],req.body[0]["password"], req.body[0]["cc"], req.body[0]["cc_exp"],req.body[0]["ccv"], req.body[0]["address"], req.body[0]["address_2"], req.body[0]["city"], req.body[0]["state"], req.body[0]["zip"]]
+  queryStr = 'INSERT INTO `customer` (`name`,`email`,`password`,`cc`,`cc_exp`,`ccv`,`address1`,`address2`,`city`,`state`,`zip`, `billzip`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)'
+  params = [req.body.data['name'],req.body.data["email"],req.body.data["password"], req.body.data["cc"], req.body.data["cc_exp"],req.body.data["ccv"], req.body.data["address1"], req.body.data["address2"], req.body.data["city"], req.body.data["state"], req.body.data["zip"], req.body.data["billzip"]]
   db.query(queryStr, params, (err) => {
       if (err) {
         console.log(err)
         res.sendStatus(500)
       } else {
+        console.log(req.body)
+        console.log(req.body.data)
         res.status(201).send('Yo this post work')
       }
     }

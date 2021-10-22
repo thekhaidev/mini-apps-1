@@ -1,3 +1,5 @@
+// require axios from 'axios'
+
 // Components
 
 var data = {}
@@ -5,20 +7,6 @@ class App extends React.Component {
   constructor(props) {
     super(props)
 
-    //   this.state = {
-    //   name: "",
-    //   email: "",
-    //   password: "",
-    //   address1: "",
-    //   address2: "",
-    //   city: "",
-    //   state: "",
-    //   zipcode: "",
-    //   cc: "",
-    //   cc_exp: "",
-    //   ccv: "",
-    //   billingzip: ""
-    // }
   }
 
   render() {
@@ -68,21 +56,6 @@ class Form1 extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = {
-      name: "",
-      email: "",
-      password: "",
-      address1: "",
-      address2: "",
-      city: "",
-      state: "",
-      zipcode: "",
-      cc: "",
-      cc_exp: "",
-      ccv: "",
-      billingzip: ""
-    }
-
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -101,11 +74,6 @@ class Form1 extends React.Component {
     const name = e.target.name
     const value = e.target.value
     data[name] = value
-    // if (this._isMounted) {
-    //   this.setState({
-    //     [name]: value
-    //   });
-    // }
     console.log(data)
     console.log(name, value)
   }
@@ -147,21 +115,6 @@ class Form2 extends React.Component {
   _isMounted = false;
   constructor(props) {
     super(props)
-
-    // this.state = {
-    //   name: this.props.data.name,
-    //   email: this.props.data.email,
-    //   password: this.props.data.password,
-    //   address1: "",
-    //   address2: "",
-    //   city: "",
-    //   state: "",
-    //   zipcode: "",
-    //   cc: "",
-    //   cc_exp: "",
-    //   ccv: "",
-    //   billingzip: ""
-    // }
 
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -209,7 +162,7 @@ class Form2 extends React.Component {
 
           <br />
           <label>Zipcode:
-            <input name="zipcode" onChange={this.props.handleChange}></input>
+            <input name="zip" onChange={this.props.handleChange}></input>
           </label>
 
           <br />
@@ -225,29 +178,32 @@ class Form3 extends React.Component {
   _isMounted = false;
   constructor(props) {
     super(props)
-    // this.state = {
-    //   name: this.props.data.name,
-    //   email: this.props.data.email,
-    //   password: this.props.data.password,
-    //   address1: this.props.data.address1,
-    //   address2: this.props.data.address2,
-    //   city: this.props.data.city,
-    //   state: this.props.data.state,
-    //   zipcode: this.props.data.zipcode,
-    //   cc: "",
-    //   cc_exp: "",
-    //   ccv: "",
-    //   billingzip: ""
-    // }
+
 
     this.handleSubmit = this.handleSubmit.bind(this)
+
 
   }
 
   componentDidMount() {
     this._isMounted = true;
-    console.log('props', this.props.data)
-    console.log('state', this.state)
+    // console.log('props', this.props.data)
+    // console.log('state', this.state)
+    // console.log(data)
+    // this.setState({
+    //   name: data.name,
+    //   email: data.email,
+    //   password: data.password,
+    //   address1: data.address1,
+    //   address2: data.address2,
+    //   city: data.city,
+    //   state: data.state,
+    //   zip: data.zip,
+    //   cc: data.cc,
+    //   cc_exp: data.cc_exp,
+    //   ccv: data.ccv,
+    //   billzip: data.billzip
+    // })
   }
 
 
@@ -261,6 +217,7 @@ class Form3 extends React.Component {
     // console.log('This is doing something')
 
   }
+
   render() {
     { console.log('state', this.state) }
     { console.log('props', this.props) }
@@ -282,7 +239,7 @@ class Form3 extends React.Component {
           </label>
 
           <label>Billing Zip:
-            <input name="billingzip" onChange={this.props.handleChange}></input>
+            <input name="billzip" onChange={this.props.handleChange}></input>
           </label>
 
           <br />
@@ -298,6 +255,33 @@ class Form3 extends React.Component {
 class FinalForm extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {
+      name: data.name,
+      email: data.email,
+      password: data.password,
+      address1: data.address1,
+      address2: data.address2,
+      city: data.city,
+      state: data.state,
+      zip: data.zip,
+      cc: data.cc,
+      cc_exp: data.cc_exp,
+      ccv: data.ccv,
+      billzip: data.billzip
+    }
+    this.handleCheckout = this.handleCheckout.bind(this)
+  }
+
+  handleCheckout(e){
+    axios.post('/api/customers', {
+     data: this.state
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   }
 
   render() {
@@ -310,18 +294,12 @@ class FinalForm extends React.Component {
          <li>Address 2: {data.address2}</li>
          <li>City: {data.city}</li>
          <li>State: {data.state}</li>
-         <li>Zip: {data.zipcode}</li>
-         <li>Name: {data.name}</li>
-         <li>Name: {data.name}</li>
-         <li>Name: {data.name}</li>
-         <li>Name: {data.name}</li>
-         <li>Name: {data.name}</li>
-         <li>Name: {data.name}</li>
+         <li>Zip: {data.zip}</li>
        </ol>
 
         <br />
         <button type="button" onClick={homePage}>Back</button>
-        <button onClick={console.log('Placeholder')}>Confirm Purchase</button>
+        <button type="button" onClick={this.handleCheckout}>Confirm Purchase</button>
       </div>
     )
   }
