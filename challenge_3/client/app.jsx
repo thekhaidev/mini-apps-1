@@ -1,7 +1,24 @@
 // Components
+
+var data = {}
 class App extends React.Component {
   constructor(props) {
     super(props)
+
+    //   this.state = {
+    //   name: "",
+    //   email: "",
+    //   password: "",
+    //   address1: "",
+    //   address2: "",
+    //   city: "",
+    //   state: "",
+    //   zipcode: "",
+    //   cc: "",
+    //   cc_exp: "",
+    //   ccv: "",
+    //   billingzip: ""
+    // }
   }
 
   render() {
@@ -46,7 +63,7 @@ class Test extends React.Component {
 }
 
 class Form1 extends React.Component {
-
+  _isMounted = false
 
   constructor(props) {
     super(props)
@@ -70,12 +87,26 @@ class Form1 extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
+  componentDidMount() {
+    this._isMounted = true;
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
 
 
   handleChange(e) {
+
     const name = e.target.name
     const value = e.target.value
-    this.setState({ [name]: value });
+    data[name] = value
+    // if (this._isMounted) {
+    //   this.setState({
+    //     [name]: value
+    //   });
+    // }
+    console.log(data)
     console.log(name, value)
   }
 
@@ -89,15 +120,15 @@ class Form1 extends React.Component {
       <div>
         <form id="form1" onSubmit={this.handleSubmit}>
           <label htmlFor="name" id="name">Name:
-            <input id="name" type="text" name="name" value={this.state.value} onChange={this.handleChange}></input>
+            <input id="name" type="text" name="name" onChange={this.handleChange}></input>
           </label>
           <br />
           <label>Email:
-            <input id="email" name="email" value={this.state.value} onChange={this.handleChange}></input>
+            <input id="email" name="email" onChange={this.handleChange}></input>
           </label>
           <br />
           <label>Password:
-            <input id="password" name="password" value={this.state.value} onChange={this.handleChange}></input>
+            <input id="password" name="password" onChange={this.handleChange}></input>
           </label>
           <br />
           <button type="button" onClick={homePage}>Back</button>
@@ -113,33 +144,41 @@ class Form1 extends React.Component {
 }
 
 class Form2 extends React.Component {
+  _isMounted = false;
   constructor(props) {
     super(props)
 
-    this.state = {
-      name: this.props.data.name,
-      email: this.props.data.email,
-      password: this.props.data.password,
-      address1: "",
-      address2: "",
-      city: "",
-      state: "",
-      zipcode: "",
-      cc: "",
-      cc_exp: "",
-      ccv: "",
-      billingzip: ""
-    }
+    // this.state = {
+    //   name: this.props.data.name,
+    //   email: this.props.data.email,
+    //   password: this.props.data.password,
+    //   address1: "",
+    //   address2: "",
+    //   city: "",
+    //   state: "",
+    //   zipcode: "",
+    //   cc: "",
+    //   cc_exp: "",
+    //   ccv: "",
+    //   billingzip: ""
+    // }
 
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   componentDidMount() {
-    console.log(this.props.data)
+    this._isMounted = true;
+    console.log('props', this.props.data)
+    console.log('state', this.state)
+  }
+
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   handleSubmit(e) {
-    ReactDOM.render(<Form3 data={this.state} handleChange={this.props.handleChange} />, document.getElementById('root'))
+    ReactDOM.render(<Form3 data={this.props.data} handleChange={this.props.handleChange} />, document.getElementById('root'))
     e.preventDefault();
     // console.log('This is doing something')
 
@@ -149,28 +188,28 @@ class Form2 extends React.Component {
 
     return (
       <div>
-        {console.log(this.state)}
+        {/* {console.log(this.state)} */}
         <form id="form2" onSubmit={this.handleSubmit}>
           <label>Address 1:
-            <input name="address1" value={this.state.value} onChange={this.props.handleChange}></input>
+            <input name="address1" onChange={this.props.handleChange}></input>
           </label>
           <br />
           <label>Address 2:
-            <input name="address2" value={this.state.value} onChange={this.props.handleChange}></input>
+            <input name="address2" onChange={this.props.handleChange}></input>
           </label>
 
           <label>City:
-            <input name="city" value={this.state.value} onChange={this.props.handleChange}></input>
+            <input name="city" onChange={this.props.handleChange}></input>
           </label>
 
           <br />
           <label>State:
-            <input name="state" value={this.state.value} onChange={this.props.handleChange}></input>
+            <input name="state" onChange={this.props.handleChange}></input>
           </label>
 
           <br />
           <label>Zipcode:
-            <input name="zipcode" value={this.state.value} onChange={this.props.handleChange}></input>
+            <input name="zipcode" onChange={this.props.handleChange}></input>
           </label>
 
           <br />
@@ -183,51 +222,72 @@ class Form2 extends React.Component {
 }
 
 class Form3 extends React.Component {
+  _isMounted = false;
   constructor(props) {
     super(props)
-    this.state = {
-      name: "",
-      email: "",
-      password: "",
-      address1: "",
-      address2: "",
-      city: "",
-      state: "",
-      zipcode: "",
-      cc: "",
-      cc_exp: "",
-      ccv: "",
-      billingzip: ""
-    }
+    // this.state = {
+    //   name: this.props.data.name,
+    //   email: this.props.data.email,
+    //   password: this.props.data.password,
+    //   address1: this.props.data.address1,
+    //   address2: this.props.data.address2,
+    //   city: this.props.data.city,
+    //   state: this.props.data.state,
+    //   zipcode: this.props.data.zipcode,
+    //   cc: "",
+    //   cc_exp: "",
+    //   ccv: "",
+    //   billingzip: ""
+    // }
+
+    this.handleSubmit = this.handleSubmit.bind(this)
 
   }
 
+  componentDidMount() {
+    this._isMounted = true;
+    console.log('props', this.props.data)
+    console.log('state', this.state)
+  }
+
+
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
+
+  handleSubmit(e) {
+    ReactDOM.render(<FinalForm data={this.props.data} handleChange={this.props.handleChange} />, document.getElementById('root'))
+    e.preventDefault();
+    // console.log('This is doing something')
+
+  }
   render() {
-    { console.log(this.state) }
+    { console.log('state', this.state) }
+    { console.log('props', this.props) }
     return (
       <div>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <label>Credit Card:
-            <input></input>
+            <input name="cc" onChange={this.props.handleChange}></input>
           </label>
 
           <br />
           <label>Expiry:
-            <input></input>
+            <input name="cc_exp" onChange={this.props.handleChange}></input>
           </label>
 
           <br />
           <label>CVV:
-            <input></input>
+            <input name="ccv" onChange={this.props.handleChange}></input>
           </label>
 
           <label>Billing Zip:
-            <input></input>
+            <input name="billingzip" onChange={this.props.handleChange}></input>
           </label>
 
           <br />
           <button type="button" onClick={nextClick}>Back</button>
-          <button onClick={FinalClick}>Next</button>
+          <button type="submit">Next</button>
         </form>
 
       </div>
@@ -243,7 +303,22 @@ class FinalForm extends React.Component {
   render() {
     return (
       <div>
-        Test
+       <ol>
+         <li>Name: {data.name}</li>
+         <li>Email: {data.email}</li>
+         <li>Address 1: {data.address1}</li>
+         <li>Address 2: {data.address2}</li>
+         <li>City: {data.city}</li>
+         <li>State: {data.state}</li>
+         <li>Zip: {data.zipcode}</li>
+         <li>Name: {data.name}</li>
+         <li>Name: {data.name}</li>
+         <li>Name: {data.name}</li>
+         <li>Name: {data.name}</li>
+         <li>Name: {data.name}</li>
+         <li>Name: {data.name}</li>
+       </ol>
+
         <br />
         <button type="button" onClick={homePage}>Back</button>
         <button onClick={console.log('Placeholder')}>Confirm Purchase</button>
